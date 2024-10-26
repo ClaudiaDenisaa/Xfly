@@ -44,7 +44,8 @@ Rezervare si informatii despre
 *Spring Boot
 *React
 
-![Alt text](Captură de ecran din 2024-10-26 la 20.25.46.png)
+Diagrama clase:
+(https://lucid.app/lucidchart/77bd3342-c945-4dae-9acc-a1cc381296ec/edit?invitationId=inv_7a96373c-28cd-436a-b998-bcdf0269cdbb&page=0_0#)
 
 
 
