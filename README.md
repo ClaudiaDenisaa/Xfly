@@ -68,21 +68,30 @@ Diagrama clase:
 
 
 ## Functionalitati/Exemple utilizare
+
 Administrator:
+
 -Adauga zbor
+
 -Modifica zbor
+
 -Anuleaza zbor
 
+
 Client:
+
 -rezervare zbor
+
 --prin formular alegerea clasei,locului,meniului,bauturii,informatii bagaj
+
 -modificare rezervare(ziua.data in functie de disponibilitatea din acea zi la acelasi zbor)
+
 -anulare rezervare
 
 
 
-
 ### Resurse
+
 https://www.w3schools.com/java/default.asp
 https://lucid.app/documents#/documents?folder_id=home
 tutoriale : https://www.youtube.com/
