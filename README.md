@@ -49,7 +49,7 @@ B)Clientul
 
 
 ## Obiective
-Rezervare si informatii despre 
+Rezervare si informatii despre calatorie.
 
 
 
