@@ -17,22 +17,22 @@ A)Administratorul:
 B)Clientul:
 
 1.Informatii cursa:
-
+<br>
 -ora plecare sosire
-
+<br>
 -preț
-
+<br>
 -din x spre y
 
 
 2.Cautare cursa după diferite chei
 
 -oraș
-
+<br>
 -data
-
+<br>
 -ora plecare
-
+<br>
 -ora sosire
 
 
@@ -44,7 +44,7 @@ B)Clientul:
 
 
 Obiective:
-
+<br>
 Rezervare si informatii despre calatorie.
 
 
@@ -62,21 +62,21 @@ Arhitectura:
 Functionalitati/Exemple utilizare:
 
 Administrator:
-
+<br>
 -Adauga zbor
-
+<br>
 -Modifica zbor
-
+<br>
 -Anuleaza zbor
 
 
 Client:
-
+<br>
 -rezervare zbor
-
+<br>
 --prin formular alegerea clasei,locului,meniului,bauturii,informatii bagaj
-
+<br>
 -modificare rezervare(ziua.data in functie de disponibilitatea din acea zi la acelasi zbor)
-
+<br>
 -anulare rezervare
 
