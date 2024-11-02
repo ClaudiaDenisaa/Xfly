@@ -4,7 +4,7 @@ Programare3, Proiect individual, Competente de antreprenoriat  (JAVA)
 
 
 O aplicatie pentru o companie aeriana. Aplicatia din doua perspective, a administratorului si a unui pasager.
-
+<br>
 A)Administratorul:
 
 1.Adaugare curse(ora plecare, sosire,destinatie,pret,tip avion, ruta, durata zbor)
