@@ -44,8 +44,6 @@ B)Clientul
 +++
 4.Vizualizare in timp real a etapelor zborului(unde ești pe harta,intarzieri,)
 
-5.Vizualizare locație bagaj după un mic localizator pus pe bagaj(se va percepe o taxa de 10 euro pt aceasta funcție)
-
 
 
 ## Obiective
@@ -57,9 +55,8 @@ Rezervare si informatii despre calatorie.
 ## Arhitectura
 
 *IntelliJ IDEA
-*Postman
-*Spring Boot
-*React
+*MySQLWorkBench
+*Swing UI
 
 Diagrama clase:
 (https://lucid.app/lucidchart/77bd3342-c945-4dae-9acc-a1cc381296ec/edit?invitationId=inv_7a96373c-28cd-436a-b998-bcdf0269cdbb&page=0_0#)
