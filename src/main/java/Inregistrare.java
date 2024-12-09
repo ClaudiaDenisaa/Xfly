@@ -14,6 +14,8 @@ public class Inregistrare extends MyFrame{
     private JTextField textField3;
     private JButton b_inregistrare;
 
+
+
     public Inregistrare() {
         super();
         setTitle("Cont nou");

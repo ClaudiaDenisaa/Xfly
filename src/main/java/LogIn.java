@@ -12,6 +12,7 @@ public class LogIn extends MyFrame{
     private JButton b_cont;
 
 
+
     public LogIn() {
         super();
         setTitle("Log In");

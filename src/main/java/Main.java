@@ -23,5 +23,6 @@ public class Main {
 
         //new LogIn();
       //  new Inregistrare();
+
     }
 }
