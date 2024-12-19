@@ -2,6 +2,9 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * Clasa de logare
+ */
 public class LogIn extends MyFrame{
     private JPanel panel1;
     private JTextField text_username;
@@ -12,7 +15,9 @@ public class LogIn extends MyFrame{
     private JButton b_cont;
 
 
-
+    /**
+     * Constructor logare
+     */
     public LogIn() {
         super();
         setTitle("Log In");
@@ -22,11 +27,6 @@ public class LogIn extends MyFrame{
         setVisible(true);
     }
 
-
-//
-//    private void createUIComponents() {
-//        b_log.setBorder(new LineBorder(Color.BLUE, 20));
-//    }
 
 
 }

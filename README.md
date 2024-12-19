@@ -54,8 +54,7 @@ Rezervare si informatii despre calatorie.
 
 ## Arhitectura
 
-*IntelliJ IDEA
-*MySQLWorkBench
+*MySQL
 *Swing UI
 
 Diagrama clase:
