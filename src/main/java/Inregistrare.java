@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.regex.Pattern;
 
@@ -204,17 +205,19 @@ public class Inregistrare extends MyFrame{
             if(conexiune.MyConn() == 0) {
                 JOptionPane.showMessageDialog(this, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);//INFORMATION_MESSAGE
             }else {
-                String sql = "INSERT INTO user (id_plane,user_name,nr_phone,cnp,type,email,parola) VALUES (?,?,?,?,?,?,?)";
+                String sql = "INSERT INTO user (id_ticket,user_name,nr_phone,cnp,type,email,passworld) VALUES (?,?,?,?,?,?,?)";
+
                 String checkSql = "SELECT f.id_plane FROM flight f JOIN plane p ON f.id_plane = p.id_plane";
                 PreparedStatement IDstmt = conexiune.getDB().prepareStatement(checkSql);
 
                 PreparedStatement stmt = conexiune.getDB().prepareStatement(sql);
-                stmt.setString(3, u_nume);
-                stmt.setInt(4, Integer.parseInt(u_telefon));
-                stmt.setInt(5, Integer.parseInt(u_cnp));
-                stmt.setString(6, String.valueOf(1));
-                stmt.setString(7, u_email);
-                stmt.setString(8, u_parola);
+                stmt.setObject(1,null);
+                stmt.setString(2, u_nume);
+                stmt.setInt(3, Integer.parseInt(u_telefon));
+                stmt.setLong(4, Long.parseLong(u_cnp));
+                stmt.setString(5, String.valueOf(1));
+                stmt.setString(6, u_email);
+                stmt.setString(7, u_parola);
                 stmt.executeUpdate();
 
                 JOptionPane.showMessageDialog(this, "Utilizator înregistrat cu succes!", "Succes", JOptionPane.INFORMATION_MESSAGE);

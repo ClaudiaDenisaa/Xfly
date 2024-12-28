@@ -3,6 +3,7 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.sql.*;
 
 /**
@@ -10,7 +11,7 @@ import java.sql.*;
  */
 public class Conn extends Component {
     static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String db = "jdbc:mysql://localhost:330/db_xfly";
+    static final String db = "jdbc:mysql://localhost:3306/db_xfly";
     final String db_user = "root";
     final String db_password = "root1234";
     private Connection connect = null;
@@ -22,11 +23,10 @@ public class Conn extends Component {
     public Connection getDB() {
         try {
             if (connect == null || connect.isClosed()) {
-                Class.forName(DRIVER);
                 connect = DriverManager.getConnection(db, db_user, db_password);
             }
-        } catch (SQLException | ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(this, "Eroare la conectarea cu baza de date: " + e.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "!!Eroare la conectarea cu baza de date: " + e.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
             return null;
         }
             return connect;
