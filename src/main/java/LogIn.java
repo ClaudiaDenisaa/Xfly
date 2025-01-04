@@ -143,9 +143,7 @@ public class LogIn extends MyFrame{
 
         if(validAdmin.get() == true){
             SwingUtilities.invokeLater(() -> new VizualizareZborAdmin());
-        }
-
-        if(valid == true) {
+        }else if(valid == true) {
             try(Conn conn = new Conn()){
                 if(conn.MyConn() == 0){
                     JOptionPane.showMessageDialog(this, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
