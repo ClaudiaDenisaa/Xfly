@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class VizualizareZborAdmin extends JFrame {
+public class VizualizareZborAdmin extends MyFrame {
     private JButton BtnMeniuAdmin;
     private JLabel MainView;
     private JPanel z1;
@@ -25,9 +25,7 @@ public class VizualizareZborAdmin extends JFrame {
         super();
         setTitle("Vizualizarea zborurilor");
         setContentPane(panel);
-        setMinimumSize(new Dimension(800, 600));
         setLocationRelativeTo(null);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

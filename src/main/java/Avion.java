@@ -23,10 +23,11 @@ public class Avion extends MyFrame {
     private JTextField textClasaB;
     private JButton btnAddAvion;
     private JButton buttonSpreMain;
-    private JLabel labelErori;
+    private JLabel labelMesaj;
     private JPanel frameAddAvion;
 
     private ArrayList<Plane> listaAvioane;
+
 
 
     /**
@@ -36,10 +37,8 @@ public class Avion extends MyFrame {
         super();
         setTitle("Cont nou");
         setContentPane(frameAddAvion);
-        setMinimumSize(new Dimension(400, 300));
         setLocationRelativeTo(null);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.listaAvioane = new ArrayList<>();
 
@@ -47,6 +46,13 @@ public class Avion extends MyFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addAvionBD();
+            }
+        });
+
+        buttonSpreMain.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                SwingUtilities.invokeLater(VizualizareZborAdmin::new);
             }
         });
 
@@ -61,24 +67,26 @@ public class Avion extends MyFrame {
     public void makeAvion(){
         try {
             Conn conexiune = new Conn();
-            if(conexiune.MyConn() ==  0){
-                JOptionPane.showMessageDialog(labelErori, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
+            if(conexiune.MyConn() ==  0) {
+                JOptionPane.showMessageDialog(labelMesaj, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+            }else{
                 String takeSql = "SELECT * FROM plane";
                 PreparedStatement stmt = conexiune.getDB().prepareStatement(takeSql);
                 ResultSet rs = stmt.executeQuery();
-                while(rs.next()){
+                while (rs.next()) {
                     int id = rs.getInt("id_plane");
                     String model = rs.getString("model");
                     int locuriA = rs.getInt("capacityA");
                     int locuriB = rs.getInt("capacityB");
 
-                    Plane a = new Plane(id,model,locuriA,locuriB);
-                    listaAvioane.add(a);
+                    Plane avion = new Plane(id, model, locuriA, locuriB);
+                    listaAvioane.add(avion);
                 }
                 rs.close();
             }
+
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(labelErori, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(labelMesaj, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -92,11 +100,13 @@ public class Avion extends MyFrame {
         String u_model = textDenumire.getText();
         String u_capacityA = textClasaA.getText();
         String u_capacityB = textClasaB.getText();
+        StringBuilder labelErori = new StringBuilder();
+
         int valid = 1;
 
         if(u_model.isEmpty()) {
             valid = 0;
-            labelErori.setText("Trebuie sa dai un nume!");
+            labelErori.append("Trebuie sa dai un nume! ");
         }
 
         int verif_capacityA = 0;
@@ -106,28 +116,31 @@ public class Avion extends MyFrame {
             verif_capacityA = Integer.parseInt(u_capacityA);
             if(verif_capacityA <= 0) {
                 valid = 0;
-                labelErori.setText("Capacitatea clasei A trebuie să fie un număr pozitiv!");
+                labelErori.append("Capacitatea clasei A trebuie să fie un număr pozitiv! ");
             }
         } catch (NumberFormatException ex) {
             valid = 0;
-            labelErori.setText("Capacitatea clasei A trebuie să fie format din cifre!");
+            labelErori.append("Capacitatea clasei A trebuie să fie formata din cifre! ");
         }
 
        try{
            verif_capacityB = Integer.parseInt(u_capacityB);
            if(verif_capacityB <= 0) {
                valid = 0;
-               labelErori.setText("Capacitatea clasei B trebuie să fie un număr pozitiv!");
+               labelErori.append("Capacitatea clasei B trebuie să fie un număr pozitiv! ");
            }
        } catch (NumberFormatException ex) {
            valid = 0;
-           labelErori.setText("Capacitatea clasei B trebuie să fie format din cifre!!");
+           labelErori.append("Capacitatea clasei B trebuie să fie formata din cifre!! ");
        }
 
+       if(valid == 0){
+           labelMesaj.setText(labelErori.toString());
+       }
         try{
            Conn conexiune = new Conn();
            if(conexiune.MyConn() == 0) {
-               JOptionPane.showMessageDialog(labelErori, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(labelMesaj, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
            }else if(valid == 1) {
                String insertSql = "INSERT INTO plane (model,capacityA,capacityB) VALUES (?,?,?)";
                PreparedStatement stmt = conexiune.getDB().prepareStatement(insertSql);
@@ -137,15 +150,17 @@ public class Avion extends MyFrame {
                stmt.executeUpdate();
                stmt.close();
                conexiune.CloseMyConn();
-           }else {
+
+               labelMesaj.setText("Adaugarea a reusit!!  ");
                textDenumire.setText("");
                textClasaA.setText("");
                textClasaB.setText("");
                conexiune.CloseMyConn();
            }
        }catch (SQLException e){
-            JOptionPane.showMessageDialog(labelErori, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(labelMesaj, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
         }
    }
+
 
 }

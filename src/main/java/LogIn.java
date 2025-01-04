@@ -33,10 +33,8 @@ public class LogIn extends MyFrame{
         super();
         setTitle("Log In");
         setContentPane(panel1);
-        setMinimumSize(new Dimension(400, 300));
         setLocationRelativeTo(null);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         b_cont.addActionListener(e -> new Inregistrare());
 

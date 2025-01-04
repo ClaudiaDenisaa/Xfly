@@ -26,10 +26,8 @@ public class Inregistrare extends MyFrame{
         super();
         setTitle("Cont nou");
         setContentPane(panelContNou);
-        setMinimumSize(new Dimension(400, 300));
         setLocationRelativeTo(null);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         b_inregistrare.addActionListener(new ActionListener() {
             @Override
