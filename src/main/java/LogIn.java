@@ -156,7 +156,7 @@ public class LogIn extends MyFrame{
                                 int idUser = rs.getInt("id_user");
                                 found = true;
                                 Pasager.Utilizator(idUser);
-                                SwingUtilities.invokeLater(() -> new VizualizareZborPasager(idUser));
+                                SwingUtilities.invokeLater(() -> new VizualizareZborPasager());
                         }
 
                         if (!found) {
