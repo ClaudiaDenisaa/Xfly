@@ -41,6 +41,7 @@ public class Avion extends MyFrame {
         setMinimumSize(new Dimension(400, 300));
         setLocationRelativeTo(null);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.listaAvioane = new ArrayList<>();
 

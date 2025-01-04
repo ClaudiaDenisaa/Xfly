@@ -9,7 +9,7 @@ import java.sql.*;
 /**
  * Clasa Conn pentru conectarea cu baza de date db_xfly
  */
-public class Conn extends Component {
+public class Conn extends Component implements AutoCloseable{
     static final String DRIVER = "com.mysql.jdbc.Driver";
     static final String db = "jdbc:mysql://localhost:3306/db_xfly";
     final String db_user = "root";
@@ -59,7 +59,12 @@ public class Conn extends Component {
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(this, "Eroare la închiderea conexiunii: " + e.getMessage(), "Eroare", JOptionPane.ERROR_MESSAGE);
             }
-        }
+    }
+
+    @Override
+    public void close(){
+        CloseMyConn();
+    }
 }
 
 

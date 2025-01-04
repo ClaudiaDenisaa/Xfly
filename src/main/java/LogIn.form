@@ -38,17 +38,6 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="33c83" class="javax.swing.JTextField" binding="text_password">
-        <constraints>
-          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-6896897"/>
-          <text value=""/>
-        </properties>
-      </component>
       <hspacer id="80821">
         <constraints>
           <grid row="6" column="0" row-span="1" col-span="12" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -171,6 +160,16 @@
           <grid row="7" column="6" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
+      <component id="ddfbf" class="javax.swing.JPasswordField" binding="text_password">
+        <constraints>
+          <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-6896897"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

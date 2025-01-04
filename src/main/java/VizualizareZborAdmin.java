@@ -4,7 +4,7 @@ import java.awt.*;
 /**
  * Clasa de VizualizareZborAdmin
  */
-public class VizualizareZborAdmin {
+public class VizualizareZborAdmin extends JFrame {
     private JButton BtnMeniuAdmin;
     private JLabel MainView;
     private JPanel z1;
@@ -18,13 +18,18 @@ public class VizualizareZborAdmin {
     private JButton btnModificare;
     private JButton button1;
     private JButton btnExitAdmin;
-    private JPanel JPanel1;
+    private JPanel panel;
 
     /**
      * Constructor VizualizareZborAdmin
      */
     public VizualizareZborAdmin() {
         super();
-
+        setTitle("Vizualizarea zborurilor");
+        setContentPane(panel);
+        setMinimumSize(new Dimension(800, 600));
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

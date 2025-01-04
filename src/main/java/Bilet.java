@@ -12,6 +12,10 @@ public class Bilet {
     private String durata_calatorie;
 
     /**
+     * Constructor
+     */
+    public Bilet(){};
+    /**
      * Constructor bilet
      * @param id id-ul biletului
      * @param p destinatia
