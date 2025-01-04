@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 
-/**
- * Clasa pentru avion
- */
+
 public class Avion extends MyFrame {
     private int id;
     private String model;

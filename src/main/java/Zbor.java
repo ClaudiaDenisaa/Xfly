@@ -1,9 +1,7 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-/**
- * Clasa Zbor
- */
+
 public class Zbor {
     private int id_zbor;
     private Avion avion;

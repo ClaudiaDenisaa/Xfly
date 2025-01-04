@@ -8,9 +8,7 @@ import java.awt.event.FocusListener;
 import java.sql.PreparedStatement;
 import java.util.regex.Pattern;
 
-/**
- * Clasa de inregistrare
- */
+
 public class Inregistrare extends MyFrame{
     private JPanel panelContNou;
     private JTextField nume;

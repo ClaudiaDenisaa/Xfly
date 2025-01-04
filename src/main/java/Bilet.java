@@ -1,8 +1,6 @@
 import java.time.LocalDate;
 
-/**
- * Clasa pentru bilet de avion
- */
+
 public class Bilet {
     private int id_bilet; //id_rezervation
     private String plecare;
@@ -12,7 +10,7 @@ public class Bilet {
     private String durata_calatorie;
 
     /**
-     * Constructor
+     * Constructor fara parametrii
      */
     public Bilet(){};
     /**

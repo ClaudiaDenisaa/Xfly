@@ -35,7 +35,7 @@ public class Pasager extends Persoana{
      * @return un pasager de tip Pasager
      */
    public static Pasager Utilizator(int id){
-        //din alte clase scrii Pasager.getUtilizator p ; p.getNume() ca exemplu
+
         Pasager pasager = null;
         try (Conn conn = new Conn()) {
             if (conn.MyConn() == 0) {
@@ -66,6 +66,10 @@ public class Pasager extends Persoana{
         return pasager;
   }
 
+    /**
+     * Getter pentru utilizator
+     * @return un pasager
+     */
     public Pasager getUtilizator(){
        if(utilizator == null){
            throw new RuntimeException("Utilizatorul nu a fost setat. Folosește metoda Utilizator(int id).");
@@ -74,26 +78,50 @@ public class Pasager extends Persoana{
     }
 
 
+    /**
+     * Getter id pasager
+     * @return id - int
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Seteer id pasager
+     * @param id_nou - int
+     */
     public void setId(int id_nou) {
         this.id = id_nou;
     }
 
+    /**
+     * Geeter bilet pasager
+     * @return bilet - tip Bilet
+     */
     public Bilet getBilet(){
         return bilet;
     }
 
+    /**
+     * Getter cnp pasager
+     * @return cnp - string
+     */
     public String getCnp(){
         return cnp;
     }
 
+    /**
+     * Getter telefon pasager
+     * @return telefon - int
+     */
     public int getTelefon(){
         return telefon;
     }
 
+    /**
+     * Getter email pasager
+     * @return email - string
+     */
     public String getEmail(){
         return email;
     }

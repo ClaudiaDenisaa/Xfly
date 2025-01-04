@@ -12,9 +12,7 @@ import java.sql.ResultSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
 
-/**
- * Clasa de logare
- */
+
 public class LogIn extends MyFrame{
     private JPanel panel1;
     private JTextField text_username;
@@ -41,14 +39,6 @@ public class LogIn extends MyFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         b_cont.addActionListener(e -> new Inregistrare());
-       /* b_cont.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //SwingUtilities.invokeLater(() -> new Inregistrare());
-
-            }
-        });
-*/
 
         b_log.addActionListener(new ActionListener() {
             @Override
@@ -59,6 +49,9 @@ public class LogIn extends MyFrame{
 
     }
 
+    /**
+     * Validare campuri si functia de logare pentru butonul de logare
+     */
     public void logare(){
         boolean valid = true;
         AtomicBoolean validAdmin = new AtomicBoolean(false);

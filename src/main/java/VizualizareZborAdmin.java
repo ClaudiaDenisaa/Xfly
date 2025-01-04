@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Clasa de VizualizareZborAdmin
- */
+
 public class VizualizareZborAdmin extends JFrame {
     private JButton BtnMeniuAdmin;
     private JLabel MainView;
