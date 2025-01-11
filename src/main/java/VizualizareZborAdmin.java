@@ -48,6 +48,8 @@ public class VizualizareZborAdmin extends MyFrame {
 
     public void componentaZbor(){
         panelDeComponente.removeAll();
+        panelDeComponente.revalidate();
+        panelDeComponente.repaint();
 
         ArrayList<Zbor> listaZboruri = Zbor.getListaZboruri();
         if (listaZboruri == null || listaZboruri.isEmpty()) {
@@ -84,15 +86,21 @@ public class VizualizareZborAdmin extends MyFrame {
             zborPanel.add(new JButton("Modifica"));
 
             zborPanel.add(new JLabel("Preț: " + z.getPret() + " euro"));
-            zborPanel.add(new JButton("Sterge"));
+            JButton btnStergere = new JButton("Stergere");
+            zborPanel.add(btnStergere);
 
-
+            btnStergere.addActionListener(e -> {
+               int confirmare = JOptionPane.showConfirmDialog(null,"Sigur doriți să ștergeți acest zbor?",
+                       "Confirmare Ștergere",JOptionPane.YES_NO_OPTION);
+               if(confirmare == JOptionPane.YES_OPTION){
+                   Zbor.stergereZbor(z.getId_zbor());
+                   componentaZbor();
+               }
+            });
 
             panelDeComponente.add(zborPanel);
-            panelDeComponente.revalidate();
-            panelDeComponente.repaint();
         }
-
-
+        panelDeComponente.revalidate();
+        panelDeComponente.repaint();
     }
 }

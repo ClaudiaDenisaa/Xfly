@@ -14,22 +14,6 @@ public class Plane {
     private static ArrayList<Plane> listaAvioane =  new ArrayList<>();
 
 
-    /**
-     * Adaug un avion in lista de avioane
-     * @param plane - tip Plane
-     */
-    public static void addListaAvioane(Plane plane){
-        listaAvioane.add(plane);
-    }
-
-    /**
-     * Returnez lista de avioane
-     * @return lista de avioane - tip Plane
-     */
-    public static ArrayList<Plane> getAvioane()
-    {
-        return listaAvioane;
-    }
 
     /**
      * Constructor Plane fara parametrii
@@ -49,6 +33,32 @@ public class Plane {
         this.locuriA = locuriA;
         this.locuriB = locuriB;
     }
+
+
+    /**
+     * Adaug un avion in lista de avioane
+     * @param plane - tip Plane
+     */
+    public static void addListaAvioane(Plane plane){
+        listaAvioane.add(plane);
+    }
+
+    /**
+     * Returnez lista de avioane
+     * @return lista de avioane - tip Plane
+     */
+    public static ArrayList<Plane> getListaAvioane()
+    {
+        return listaAvioane;
+    }
+
+    /**
+     * Stergerea avioanelor din lista
+     */
+    public static void stergereListaAvioane(){
+        listaAvioane.clear();
+    }
+
 
     /**
      * Getter id avion

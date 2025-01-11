@@ -1,3 +1,5 @@
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
+
 import javax.swing.*;
 import java.sql.*;
 import java.time.LocalDate;
@@ -20,6 +22,35 @@ public class Zbor {
     private Throwable e;
 
 
+
+    /**
+     * Constructor Zbor
+     * @param avion avion
+     * @param pret pret
+     * @param dp data plecare
+     * @param ds data sosire
+     * @param op ora plecare
+     * @param os ora sosire
+     * @param data data
+     * @param durata durata
+     */
+    public Zbor(Plane avion,double pret,String dp,String ds,LocalTime op,LocalTime os,LocalDate data,LocalTime durata) {
+        this.avion = avion;
+        this.pret = pret;
+        this.destinatiePlecare = dp;
+        this.destinatieSosire = ds;
+        this.oraPlecare = op;
+        this.oraSosire = os;
+        this.data = data;
+        this.durata = durata;
+    }
+
+    /**
+     * Constructor gol
+     */
+    public Zbor(){};
+
+
     /**
      * Adaugare de zboruri in lista
      * @param zbor - tip Zbor
@@ -37,31 +68,35 @@ public class Zbor {
     }
 
     /**
-     * Constructor Zbor
-     * @param avion avion
-     * @param pret pret
-     * @param dp data plecare
-     * @param ds data sosire
-     * @param op ora plecare
-     * @param os ora sosire
-     * @param data data
-     * @param durata durata
+     * Sterge toata lista de zboruri. Va fi goala.
      */
-    public Zbor(Plane avion,double pret,String dp,String ds,LocalTime op,LocalTime os,LocalDate data,LocalTime durata) {
-        this.avion = avion;
-        this.pret = pret;
-        this.destinatiePlecare = ds;
-        this.destinatieSosire = ds;
-        this.oraPlecare = op;
-        this.oraSosire = os;
-        this.data = data;
-        this.durata = durata;
+    public static void stergeListaZboruri(){
+        listaZboruri.clear();
     }
 
     /**
-     * Constructor gol
+     * Se sterge din baza de date si din lista de zboruri un zbor cu acel id primit
+     * @param idZbor - tip int
      */
-    public Zbor(){};
+    public static void stergereZbor(int idZbor){
+        try(Conn conexiune = new Conn()){
+            if(conexiune.MyConn() == 0) {
+                throw new RuntimeException("Conexiunea la baza de date a eșuat!");
+            }else{
+                String query = "DELETE FROM flight WHERE id_flight = ?";
+                PreparedStatement stmt = conexiune.getDB().prepareStatement(query);
+                stmt.setInt(1,idZbor);
+                int liniiAfectate = stmt.executeUpdate();
+                stmt.close();
+
+                if(liniiAfectate > 0){
+                    listaZboruri.removeIf(zbor -> zbor.getId_zbor() == idZbor);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     /**
      * Adaugarea zborului in baza de date
@@ -70,7 +105,6 @@ public class Zbor {
     public  static void addZborDB(Zbor zbor) {
         try(Conn conexiune = new Conn()) {
             if(conexiune.MyConn() == 0){
-                //JOptionPane.showMessageDialog(null, "Eroare: " + e.getMessage(),"Eroare ",JOptionPane.ERROR_MESSAGE);
                 System.out.println("Eroare la conectarea cu baza de date!");
             }
             else{
@@ -98,7 +132,11 @@ public class Zbor {
         }
     }
 
+    /**
+     * Se iau toate zborurile din baza de date si se creaza lista de zboruri cu informatii
+     */
     public static void addZborDinBDinListaZboruri(){
+        Zbor.stergeListaZboruri();
         try (Conn conexiune = new Conn()) {
             if (conexiune.MyConn() == 0) {
               throw new RuntimeException("Conexiunea la baza de date a esuat!");
@@ -151,74 +189,147 @@ public class Zbor {
             JOptionPane.showMessageDialog(null, "Eroare: " + e.getMessage(), "Eroare ", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Getter id zbor
+     * @return id ul zborului - tip int
+     */
     public int getId_zbor() {
         return id_zbor;
     }
 
+    /**
+     * Setter id zbor
+     * @param id_zbor - tip int
+     */
     public void setId_zbor(int id_zbor) {
         this.id_zbor = id_zbor;
     }
 
+    /**
+     * Getter avion
+     * @return avion - tip Avion
+     */
     public Plane getAvion() {
         return avion;
     }
 
+    /**
+     *Setter avion
+     * @param avion - tip Avion
+     */
     public void setAvion(Plane avion) {
         this.avion = avion;
     }
 
+    /**
+     * Getter pret
+     * @return pret - tip double
+     */
     public double getPret() {
         return pret;
     }
 
+    /**
+     * Setter pret
+     * @param pret - tip double
+     */
     public void setPret(double pret) {
         this.pret = pret;
     }
 
+    /**
+     * Getter destinatie plecare
+     * @return destinatie plecare - tip String
+     */
     public String getDestinatiePlecare() {
         return destinatiePlecare;
     }
 
+    /**
+     * Setter destinatie plecare
+     * @param destinatiePlecare - tip String
+     */
     public void setDestinatiePlecare(String destinatiePlecare) {
         this.destinatiePlecare = destinatiePlecare;
     }
 
+    /**
+     * Getter destinatie sosire
+     * @return sosire - tip String
+     */
     public String getDestinatieSosire() {
         return destinatieSosire;
     }
 
+    /**
+     * Setter destinatie sosire
+     * @param destinatieSosire - tip String
+     */
     public void setDestinatieSosire(String destinatieSosire) {
         this.destinatieSosire = destinatieSosire;
     }
 
+    /**
+     * Getter ora plecare
+     * @return ora plecare - tip LocalTime
+     */
     public LocalTime getOraPlecare() {
         return oraPlecare;
     }
 
+    /**
+     * Setter ora plecare
+     * @param oraPlecare - tip LocalTime
+     */
     public void setOraPlecare(LocalTime oraPlecare) {
         this.oraPlecare = oraPlecare;
     }
 
+    /**
+     * Getter ora sosire
+     * @return ora sosire - tip LocalTime
+     */
     public LocalTime getOraSosire() {
         return oraSosire;
     }
 
+    /**
+     * Setter ora sosire
+     * @param oraSosire - tip. LocalTime
+     */
     public void setOraSosire(LocalTime oraSosire) {
         this.oraSosire = oraSosire;
     }
 
+    /**
+     * Getter data
+     * @return data - tip LocalDate
+     */
     public LocalDate getData() {
         return data;
     }
 
+    /**
+     * Setter data
+     * @param data - tip LocalDate
+     */
     public void setData(LocalDate data) {
         this.data = data;
     }
 
+    /**
+     * Getter durata
+     * @return durata - tip. LocalTime
+     */
     public LocalTime getDurata() {
         return durata;
     }
 
+    /**
+     * Setter durata
+     * @param durata - tip LocalTime
+     */
     public void setDurata(LocalTime durata) {
         this.durata = durata;
     }

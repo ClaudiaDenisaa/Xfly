@@ -216,15 +216,15 @@ public class AddZborAdmin extends MyFrame{
             //se creaza un zbor cu datele preluate si se pune in listaZboruri
             String numeAvion = (String) avionulSelectat.getSelectedItem();
             double pretul = Double.parseDouble(pretulZborului.getText());
-            String p = plecareAleasa.getText().trim();
-            String s = sosireAleasa.getText().trim();
-            DateTimeFormatter formatata = DateTimeFormatter.ofPattern("dd:MM:yyyy");
+            String plecarea =plecareAleasa.getText().trim();
+            String sosirea = sosireAleasa.getText().trim();
+            DateTimeFormatter formatata = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             LocalDate d = LocalDate.parse(dataZborului.getText(), formatata);
 
             Object oraPlecarii = oraPlecare.getSelectedItem();
             String oraPlecariiString = (String) oraPlecarii;
             int oPlecarii = Integer.parseInt(oraPlecariiString);
-            Object minPlecarii = oraPlecare.getSelectedItem();
+            Object minPlecarii = minPlecare.getSelectedItem();
             String minPlecariiString = (String) minPlecarii;
             int mPlecarii = Integer.parseInt(minPlecariiString);
             LocalTime oraDePlecare = LocalTime.of(oPlecarii, mPlecarii);
@@ -232,7 +232,7 @@ public class AddZborAdmin extends MyFrame{
             Object oraSosirii = oraSosire.getSelectedItem();
             String oraSosiriiString = (String) oraSosirii;
             int oSosirii = Integer.parseInt(oraSosiriiString);
-            Object minSosirii = oraSosire.getSelectedItem();
+            Object minSosirii = minSosire.getSelectedItem();
             String minSosiriiString = (String) minSosirii;
             int mSosirii = Integer.parseInt(minSosiriiString);
             LocalTime oraDeSosire = LocalTime.of(oSosirii, mSosirii);
@@ -243,11 +243,12 @@ public class AddZborAdmin extends MyFrame{
             }
             LocalTime durata = LocalTime.of(durataMinute / 60,durataMinute % 60);
 
-            ArrayList<Plane> listaAvioane = Plane.getAvioane();
+            Plane.stergereListaAvioane();
+            Avion.takeAvionDB();
+            ArrayList<Plane> listaAvioane = Plane.getListaAvioane();
             for(Plane a : listaAvioane){
                 if(a.getModel().equals(numeAvion)){
-                    Zbor zborul = new Zbor(a,pretul,p,s,oraDePlecare,oraDeSosire,d,durata);
-                    //System.out.println(zborul);
+                    Zbor zborul = new Zbor(a,pretul,plecarea,sosirea,oraDePlecare,oraDeSosire,d,durata);
                     Zbor.addZborDB(zborul);
                 }
             }
