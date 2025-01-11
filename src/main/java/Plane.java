@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class Plane {
@@ -9,6 +10,31 @@ public class Plane {
     private String model;
     private int locuriA;
     private int locuriB;
+
+    private static ArrayList<Plane> listaAvioane =  new ArrayList<>();
+
+
+    /**
+     * Adaug un avion in lista de avioane
+     * @param plane - tip Plane
+     */
+    public static void addListaAvioane(Plane plane){
+        listaAvioane.add(plane);
+    }
+
+    /**
+     * Returnez lista de avioane
+     * @return lista de avioane - tip Plane
+     */
+    public static ArrayList<Plane> getAvioane()
+    {
+        return listaAvioane;
+    }
+
+    /**
+     * Constructor Plane fara parametrii
+     */
+    public Plane(){};
 
     /**
      * Constructor avion
@@ -84,5 +110,8 @@ public class Plane {
      */
     public void setLocuriB(int locuriB) {this.locuriB = locuriB;}
 
-
+    @Override
+    public String toString() {
+        return id +" "+ model + " " + locuriA + " " + locuriB;
+    }
 }

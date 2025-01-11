@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="AddZborAdmin">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="13" column-count="14" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="13" column-count="18" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1188" height="471"/>
+      <xy x="20" y="20" width="1268" height="457"/>
     </constraints>
     <properties>
       <background color="-4274177"/>
@@ -20,7 +20,7 @@
       </component>
       <component id="b1bba" class="javax.swing.JTextField" binding="pretulZborului">
         <constraints>
-          <grid row="3" column="3" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="3" column="3" row-span="1" col-span="12" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -29,32 +29,9 @@
           <foreground color="-15584170"/>
         </properties>
       </component>
-      <component id="3a3d0" class="javax.swing.JComboBox" binding="avionulSelectat">
-        <constraints>
-          <grid row="1" column="3" row-span="1" col-span="8" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <foreground color="-15584170"/>
-          <model/>
-        </properties>
-      </component>
-      <component id="7134b" class="javax.swing.JComboBox" binding="clasaSelectata">
-        <constraints>
-          <grid row="2" column="3" row-span="1" col-span="8" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1"/>
-          <foreground color="-15584170"/>
-          <model>
-            <item value="clasa A"/>
-            <item value="clasa B"/>
-          </model>
-        </properties>
-      </component>
       <component id="289c5" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="3" row-span="1" col-span="8" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="20" use-parent-layout="false"/>
+          <grid row="0" column="3" row-span="1" col-span="12" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="20" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Annai MN" size="36" style="1"/>
@@ -73,17 +50,17 @@
       </component>
       <hspacer id="e0711">
         <constraints>
-          <grid row="11" column="3" row-span="1" col-span="8" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="11" column="3" row-span="1" col-span="12" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <hspacer id="799db">
         <constraints>
-          <grid row="9" column="3" row-span="1" col-span="8" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="3" row-span="1" col-span="12" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <component id="80e10" class="javax.swing.JTextField" binding="sosireAleasa">
         <constraints>
-          <grid row="5" column="3" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="5" column="3" row-span="1" col-span="12" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -98,9 +75,9 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="913c5" class="javax.swing.JButton" binding="button2" default-binding="true">
+      <component id="913c5" class="javax.swing.JButton" binding="btnVizualizare">
         <constraints>
-          <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="15" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-4274177"/>
@@ -111,7 +88,7 @@
       </component>
       <component id="3ad05" class="javax.swing.JTextField" binding="plecareAleasa">
         <constraints>
-          <grid row="4" column="3" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="3" row-span="1" col-span="12" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="33"/>
           </grid>
         </constraints>
@@ -123,7 +100,7 @@
       </component>
       <component id="480d9" class="javax.swing.JTextField" binding="dataZborului">
         <constraints>
-          <grid row="6" column="3" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="6" column="3" row-span="1" col-span="12" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -135,7 +112,7 @@
       </component>
       <component id="2be55" class="javax.swing.JButton" binding="adaugaButton" default-binding="true">
         <constraints>
-          <grid row="10" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="50" use-parent-layout="false"/>
+          <grid row="10" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="50" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-1"/>
@@ -143,7 +120,7 @@
           <text value="Adauga"/>
         </properties>
       </component>
-      <component id="d3358" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="d3358" class="javax.swing.JComboBox" binding="oraPlecare">
         <constraints>
           <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -178,7 +155,7 @@
           </model>
         </properties>
       </component>
-      <component id="43196" class="javax.swing.JComboBox" binding="oraPlecare">
+      <component id="43196" class="javax.swing.JComboBox" binding="minPlecare">
         <constraints>
           <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -248,7 +225,7 @@
           </model>
         </properties>
       </component>
-      <component id="23204" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="23204" class="javax.swing.JComboBox" binding="oraSosire">
         <constraints>
           <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -283,7 +260,7 @@
           </model>
         </properties>
       </component>
-      <component id="ffd9d" class="javax.swing.JComboBox" binding="oraSosire">
+      <component id="ffd9d" class="javax.swing.JComboBox" binding="minSosire">
         <constraints>
           <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -355,12 +332,12 @@
       </component>
       <vspacer id="cac86">
         <constraints>
-          <grid row="12" column="10" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="12" column="10" row-span="1" col-span="5" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <vspacer id="1c76d">
         <constraints>
-          <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="16" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
       <hspacer id="98bbd">
@@ -370,27 +347,9 @@
       </hspacer>
       <hspacer id="78457">
         <constraints>
-          <grid row="2" column="13" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="17" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="98191" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <foreground color="-15584170"/>
-          <text value="Avion"/>
-        </properties>
-      </component>
-      <component id="f1106" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <foreground color="-15584170"/>
-          <text value="Clasa"/>
-        </properties>
-      </component>
       <component id="f0a5" class="javax.swing.JLabel">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -443,6 +402,25 @@
         <properties>
           <foreground color="-15584170"/>
           <text value="Ora de sosire"/>
+        </properties>
+      </component>
+      <component id="3a3d0" class="javax.swing.JComboBox" binding="avionulSelectat">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="12" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <foreground color="-15584170"/>
+          <model/>
+        </properties>
+      </component>
+      <component id="98191" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-15584170"/>
+          <text value="Avion"/>
         </properties>
       </component>
     </children>

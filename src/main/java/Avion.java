@@ -23,10 +23,8 @@ public class Avion extends MyFrame {
     private JTextField textClasaB;
     private JButton btnAddAvion;
     private JButton buttonSpreMain;
-    private JLabel labelMesaj;
+    public  JLabel labelMesaj;
     private JPanel frameAddAvion;
-
-    private ArrayList<Plane> listaAvioane;
 
 
 
@@ -40,7 +38,6 @@ public class Avion extends MyFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        this.listaAvioane = new ArrayList<>();
 
         btnAddAvion.addActionListener(new ActionListener() {
             @Override
@@ -64,11 +61,11 @@ public class Avion extends MyFrame {
      * Construieste avioanele adaugate cu informatii din baza de date.
      * Adauga avioanele intro lista de avioane;
      */
-    public void makeAvion(){
+    public static void takeAvionDB(){
         try {
             Conn conexiune = new Conn();
             if(conexiune.MyConn() ==  0) {
-                JOptionPane.showMessageDialog(labelMesaj, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
             }else{
                 String takeSql = "SELECT * FROM plane";
                 PreparedStatement stmt = conexiune.getDB().prepareStatement(takeSql);
@@ -80,13 +77,13 @@ public class Avion extends MyFrame {
                     int locuriB = rs.getInt("capacityB");
 
                     Plane avion = new Plane(id, model, locuriA, locuriB);
-                    listaAvioane.add(avion);
+                    Plane.addListaAvioane(avion);
                 }
                 rs.close();
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(labelMesaj, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: " , "Eroare", JOptionPane.ERROR_MESSAGE);
         }
 
     }
