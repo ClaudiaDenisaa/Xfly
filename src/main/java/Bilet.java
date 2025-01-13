@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.sql.PreparedStatement;
 import java.time.LocalDate;
 
 
@@ -8,6 +10,18 @@ public class Bilet {
     private String sosire;
     private LocalDate ora_sosire;
     private String durata_calatorie;
+
+    private int nrClasaA;
+    private int nrClasaB;
+    private int idZbor;
+    private int idUser;
+    private double pret;
+    private String clasa;
+    private String film;
+    private int idMancare;
+    private int idBautura;
+
+
 
     /**
      * Constructor fara parametrii
@@ -22,13 +36,48 @@ public class Bilet {
      * @param hs ora la care pleaca
      * @param d durata calatoriei
      */
-    public Bilet(int id,String p,LocalDate hp,String s,LocalDate hs,String d){
+   public Bilet(int id,String p,LocalDate hp,String s,LocalDate hs,String d,int nrClasaA,int nrClasaB,double pr){
         this.id_bilet=id;
         this.plecare=p;
         this.ora_plecare=hp;
         this.sosire=s;
         this.ora_sosire=hs;
         this.durata_calatorie=d;
+        this.nrClasaA=nrClasaA;
+        this.nrClasaB=nrClasaB;
+        this.pret=pr;
+    }
+
+    public Bilet(int idZbor,int idUser,double pretTotal,String clasa,String film,int idMancare,int idBautura){
+       this.idZbor=idZbor;
+       this.idUser=idUser;
+       this.pret=pretTotal;
+       this.clasa=clasa;
+       this.film=film;
+       this.idMancare=idMancare;
+       this.idBautura=idBautura;
+    }
+
+    public static void addReservationBD(Bilet bilet){
+        try(Conn conn = new Conn()){
+            if(conn.MyConn() == 0){
+                JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+            }else{
+                String addSQL = "INSERT INTO reservation (id_flight,id_user,price_reservation,class,movie,id_food,id_drink) VALUES (?,?,?,?,?,?,?)";
+                PreparedStatement pstmt = conn.getDB().prepareStatement(addSQL);
+                pstmt.setInt(1, bilet.idZbor);
+                pstmt.setInt(2, bilet.idUser);
+                pstmt.setDouble(3, bilet.pret);
+                pstmt.setString(4, bilet.clasa);
+                pstmt.setString(5, bilet.film);
+                pstmt.setInt(6, bilet.idMancare);
+                pstmt.setInt(7, bilet.idBautura);
+                pstmt.executeUpdate();
+                pstmt.close();
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -79,5 +128,89 @@ public class Bilet {
         return durata_calatorie;
     }
 
+    /**
+     * Getter ntr locuri clasa A
+     * @return - nr locuri - tip int
+     */
+    public int getNrClasaA() {
+        return nrClasaA;
+    }
+
+    /**
+     * Getter nr locuri clasa B
+     * @return nr locuri - tip int
+     */
+    public int getNrClasaB() {
+        return nrClasaB;
+    }
+
+    /**
+     * Setter nr locuri clasa A
+     * @param nrClasaA - tip int
+     */
+    public void setNrClasaA(int nrClasaA) {
+        this.nrClasaA = nrClasaA;
+    }
+
+    /**
+     * Setter nr locuri clasa B
+     * @param nrClasaB - TIP INT
+     */
+    public void setNrClasaB(int nrClasaB) {
+        this.nrClasaB = nrClasaB;
+    }
+
+    /**
+     * Getter pret bilet
+     * @return pret total bilet - tip double
+     */
+    public double getPret() {
+        return pret;
+    }
+
+    /**
+     * Setter pret bilet
+     * @param pret - tip double
+     */
+    public void setPret(double pret) {
+        this.pret = pret;
+    }
+
+    public String getClasa() {
+        return clasa;
+    }
+    public void setClasa(String clasa) {
+        this.clasa = clasa;
+    }
+    public String getFilm() {
+        return film;
+    }
+    public void setFilm(String film) {
+        this.film = film;
+    }
+    public int getIdZbor() {
+        return idZbor;
+    }
+    public void setIdZbor(int idZbor) {
+        this.idZbor = idZbor;
+    }
+    public int getIdUser() {
+        return idUser;
+    }
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+    public int getIdMancare() {
+        return idMancare;
+    }
+    public void setIdMancare(int idMancare) {
+        this.idMancare = idMancare;
+    }
+    public int getIdBautura() {
+        return idBautura;
+    }
+    public void setIdBautura(int idBautura) {
+        this.idBautura = idBautura;
+    }
 
 }

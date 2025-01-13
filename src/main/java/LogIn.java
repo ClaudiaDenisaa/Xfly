@@ -22,9 +22,8 @@ public class LogIn extends MyFrame{
     private JLabel log_password;
     private JButton b_cont;
 
-    private boolean validAdmin;
 
-    Admin admin = new Admin("admin","????????");
+    //Admin admin = new Admin("admin","????????");
 
     /**
      * Constructor logare
@@ -142,7 +141,7 @@ public class LogIn extends MyFrame{
                 String numeAp = text_username.getText();
                 String parolaAp = String.valueOf(text_password.getPassword());
 
-                String s1 = "SELECT id_user,user_name,passworld FROM user WHERE user_name = ? and passworld = ?";
+                String s1 = "SELECT id_user,username,passworld FROM user WHERE username = ? and passworld = ?";
                 PreparedStatement stmt = conn.getDB().prepareStatement(s1);
                 stmt.setString(1,numeAp);
                 stmt.setString(2,parolaAp);

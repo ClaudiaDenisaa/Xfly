@@ -13,6 +13,8 @@ public class VizualizareZborAdmin extends MyFrame {
     private JPanel panel;
     private JScrollPane scrolPanel;
     private JPanel panelDeComponente;
+    private JButton btnAddFood;
+    private JButton btnAddDrink;
 
     /**
      * Constructor VizualizareZborAdmin
@@ -40,6 +42,20 @@ public class VizualizareZborAdmin extends MyFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SwingUtilities.invokeLater(AddZborAdmin::new);
+            }
+        });
+
+        btnAddFood.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(AddFood::new);
+            }
+        });
+
+        btnAddDrink.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(AddDrink::new);
             }
         });
 

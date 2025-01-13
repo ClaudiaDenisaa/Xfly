@@ -218,17 +218,16 @@ public class Inregistrare extends MyFrame{
                 if (conexiune.MyConn() == 0) {
                     JOptionPane.showMessageDialog(this, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    String sql = "INSERT INTO user (id_ticket,user_name,nr_phone,cnp,type,email,passworld) VALUES (?,?,?,?,?,?,?)";
+                    String sql = "INSERT INTO user (username,phone,cnp,type,email,passworld) VALUES (?,?,?,?,?,?,?)";
 
 
                     PreparedStatement stmt = conexiune.getDB().prepareStatement(sql);
-                    stmt.setObject(1, null);
-                    stmt.setString(2, u_nume);
-                    stmt.setInt(3, Integer.parseInt(u_telefon));
-                    stmt.setLong(4, Long.parseLong(u_cnp));
-                    stmt.setString(5, String.valueOf(1));
-                    stmt.setString(6, u_email);
-                    stmt.setString(7, u_parola);
+                    stmt.setString(1, u_nume);
+                    stmt.setInt(2, Integer.parseInt(u_telefon));
+                    stmt.setLong(3, Long.parseLong(u_cnp));
+                    stmt.setString(4, String.valueOf(1));
+                    stmt.setString(5, u_email);
+                    stmt.setString(6, u_parola);
                     stmt.executeUpdate();
 
                     JOptionPane.showMessageDialog(this, "Utilizator înregistrat cu succes!", "Succes", JOptionPane.INFORMATION_MESSAGE);

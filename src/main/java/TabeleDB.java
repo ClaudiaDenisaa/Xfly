@@ -22,9 +22,9 @@ public class TabeleDB {
             createUserTable();
             createPlaneTable();
             createFlightTable();
-            createSeatTable();
-            createMenuTable();
             createReservationTable();
+            createFoodTable();
+            createDrinkTable();
         }
 
     /**
@@ -57,8 +57,7 @@ public class TabeleDB {
             String createUserTableSQL = """
             CREATE TABLE IF NOT EXISTS user (
                 id_user INT NOT NULL AUTO_INCREMENT,
-                id_ticket INT DEFAULT NULL,
-                user_name VARCHAR(20) NOT NULL,
+                username VARCHAR(20) NOT NULL,
                 nr_phone INT,
                 cnp BIGINT,
                 type VARCHAR(1),
@@ -97,14 +96,15 @@ public class TabeleDB {
             CREATE TABLE IF NOT EXISTS flight (
                 id_flight INT NOT NULL AUTO_INCREMENT,
                 id_plane INT NOT NULL,
-                class VARCHAR(45) NOT NULL,
-                price DECIMAL(4,2),
+                classA VARCHAR(45) NOT NULL,
+                price DECIMAL(6,2),
                 departure VARCHAR(45),
                 arrival VARCHAR(45),
                 h_departure DATETIME,
                 h_arrival DATETIME,
                 date DATETIME,
                 duration VARCHAR(5),
+                classB VARCHAR(45),
                 PRIMARY KEY (id_flight),
                 FOREIGN KEY (id_plane) REFERENCES plane(id_plane) ON DELETE CASCADE
             );
@@ -113,64 +113,63 @@ public class TabeleDB {
             executeSQL(createFlightTableSQL, "Tabela 'flight' a fost creată cu succes.");
         }
 
-        /**
-         * Se creează tabela 'seat'
-         */
-        private void createSeatTable() {
-            String createSeatTableSQL = """
-            CREATE TABLE IF NOT EXISTS seat (
-                id_seat INT NOT NULL AUTO_INCREMENT,
-                class VARCHAR(1) NOT NULL,
-                occupied BOOLEAN DEFAULT FALSE,
-                price_seat DECIMAL(4,2),
-                PRIMARY KEY (id_seat)
-            );
-        """;
 
-            executeSQL(createSeatTableSQL, "Tabela 'seat' a fost creată cu succes.");
-        }
+    /**
+     * Creează tabela 'reservation'
+     */
+    private void createReservationTable() {
+        String createReservationTableSQL = """
+    CREATE TABLE IF NOT EXISTS reservation (
+        id_reservation INT NOT NULL AUTO_INCREMENT,
+        id_flight INT NOT NULL,
+        id_user INT NOT NULL,
+        price_reservation DECIMAL(6,2),
+        class VARCHAR(2),
+        movie VARCHAR(255) NULL DEFAULT NULL ;
+        id_food INT NOT NULL,
+        id_drink INT NOT NULL,
+        PRIMARY KEY (id_reservation),
+        FOREIGN KEY (id_flight) REFERENCES flight(id_flight) ON DELETE CASCADE,
+        FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE,
+        FOREIGN KEY (id_food) REFERENCES food(id_food) ON DELETE CASCADE,
+        FOREIGN KEY (id_drink) REFERENCES drink(id_drink) ON DELETE CASCADE
+    );
+    """;
 
-        /**
-         * Se creează tabela 'menu'
-         */
-        private void createMenuTable() {
-            String createMenuTableSQL = """
-            CREATE TABLE IF NOT EXISTS menu (
-                id_menu INT NOT NULL AUTO_INCREMENT,
-                id_user INT NOT NULL,
-                food TEXT,
-                drink TEXT,
-                price_menu DOUBLE,
-                movie VARCHAR(255),
-                PRIMARY KEY (id_menu),
-                FOREIGN KEY (id_user) REFERENCES user(id_user)
-            );
-        """;
+        executeSQL(createReservationTableSQL, "Tabela 'reservation' a fost creată cu succes.");
+    }
 
-            executeSQL(createMenuTableSQL, "Tabela 'menu' a fost creată cu succes.");
-        }
+    /**
+     * Se creează tabela 'food'
+     */
+    private void createFoodTable() {
+        String createFoodTableSQL = """
+    CREATE TABLE IF NOT EXISTS food (
+        id_food INT NOT NULL AUTO_INCREMENT,
+        name VARCHAR(255) NOT NULL,
+        price DECIMAL(6,2) NOT NULL,
+        PRIMARY KEY (id_food)
+    );
+    """;
 
-        /**
-         * Creează tabela 'reservation'
-         */
-        private void createReservationTable() {
-            String createReservationTableSQL = """
-            CREATE TABLE IF NOT EXISTS reservation (
-                id_reservation INT NOT NULL AUTO_INCREMENT,
-                id_flight INT NOT NULL,
-                id_user INT NOT NULL,
-                id_seat INT NOT NULL,
-                id_menu INT NOT NULL,
-                PRIMARY KEY (id_reservation),
-                FOREIGN KEY (id_flight) REFERENCES flight(id_flight) ON DELETE CASCADE,
-                FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE,
-                FOREIGN KEY (id_seat) REFERENCES seat(id_seat) ON DELETE CASCADE,
-                FOREIGN KEY (id_menu) REFERENCES menu(id_menu) ON DELETE CASCADE
-            );
-        """;
+        executeSQL(createFoodTableSQL, "Tabela 'food' a fost creată cu succes.");
+    }
 
-            executeSQL(createReservationTableSQL, "Tabela 'reservation' a fost creată cu succes.");
-        }
+    /**
+     * Se creează tabela 'drink'
+     */
+    private void createDrinkTable() {
+        String createDrinkTableSQL = """
+    CREATE TABLE IF NOT EXISTS drink (
+        id_drink INT NOT NULL AUTO_INCREMENT,
+        name VARCHAR(255) NOT NULL,
+        price DECIMAL(6,2) NOT NULL,
+        PRIMARY KEY (id_drink)
+    );
+    """;
+
+        executeSQL(createDrinkTableSQL, "Tabela 'drink' a fost creată cu succes.");
+    }
 
         /**
          * Metoda pentru executarea unui SQL
