@@ -13,6 +13,11 @@ public class Bautura {
     public static ArrayList<Bautura> listaBautura = new ArrayList<>();
 
     /**
+     * Constructor fara parametrii
+     */
+    public Bautura(){};
+
+    /**
      * Constructor Bautura
      * @param numeBautura - tip String
      * @param pretBautura - tip double

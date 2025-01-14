@@ -18,8 +18,8 @@ public class Zbor {
     private LocalDate data;
     private LocalTime durata;//localtime in db
 
-    private static ArrayList<Zbor> listaZboruri = new ArrayList<>();
-    private Throwable e;
+    public static ArrayList<Zbor> listaZboruri = new ArrayList<>();
+
 
 
 
@@ -147,13 +147,10 @@ public class Zbor {
                 while(rs.next()){
                     Zbor zborNou = new Zbor();
                     zborNou.setId_zbor(rs.getInt("id_flight"));
-                    try(Conn conexiune2 = new Conn()) {
-                        if (conexiune.MyConn() == 0) {
-                            throw new RuntimeException("Conexiunea la baza de date a esuat!");
-                        } else {
+
                             Plane plane = new Plane();
                             String query3 = "SELECT * FROM plane WHERE id_plane=?";
-                            PreparedStatement stmt2 = conexiune2.getDB().prepareStatement(query3);
+                            PreparedStatement stmt2 = conexiune.getDB().prepareStatement(query3);
                             stmt2.setInt(1,rs.getInt("id_plane"));
                             ResultSet rs2 = stmt2.executeQuery();
                             while(rs2.next()){
@@ -167,11 +164,10 @@ public class Zbor {
                                     SwingUtilities.invokeLater(Avion::new);
                                 }
                             }
-                            zborNou.setAvion(plane);
                             rs2.close();
                             stmt2.close();
-                        }
-                    }
+
+
                     zborNou.setDestinatiePlecare(rs.getString("departure"));
                     zborNou.setDestinatieSosire(rs.getString("arrival"));
                     zborNou.setOraPlecare(rs.getTime("h_departure").toLocalTime());
@@ -189,6 +185,66 @@ public class Zbor {
             JOptionPane.showMessageDialog(null, "Eroare: " + e.getMessage(), "Eroare ", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Ia toate zborurile (care sunt asociate id ului. utilizatorului care s a logat) din baza de date si se creaza o lista de zboruri
+     * @param idUser - tip int
+     */
+    public static void addZborDinBDinListaZboruri(int idUser){
+        Zbor.stergeListaZboruri();
+        try (Conn conexiune = new Conn()) {
+            if (conexiune.MyConn() == 0) {
+                throw new RuntimeException("Conexiunea la baza de date a esuat!");
+            } else {
+                String query2 = "SELECT f.id_flight, f.id_plane, f.classA, f.classB, f.price, f.departure, f.arrival, f.h_departure, f.h_arrival, f.date, f.duration FROM flight f INNER JOIN reservation r ON f.id_flight = r.id_flight WHERE r.id_user = ?;";
+                //String query2 = "SELECT * FROM flight WHERE id_flight=?";
+                PreparedStatement stmt = conexiune.getDB().prepareStatement(query2);
+                stmt.setInt(1,idUser);
+                ResultSet rs = stmt.executeQuery();
+                while(rs.next()){
+                    Zbor zborNou = new Zbor();
+                    zborNou.setId_zbor(rs.getInt("id_flight"));
+
+
+                            Plane plane = new Plane();
+                            String query3 = "SELECT * FROM plane WHERE id_plane=?";
+                            PreparedStatement stmt2 = conexiune.getDB().prepareStatement(query3);
+                            stmt2.setInt(1,rs.getInt("id_plane"));
+                            ResultSet rs2 = stmt2.executeQuery();
+                            while(rs2.next()){
+                                if(!rs2.wasNull()){
+                                    plane.setId(rs2.getInt(1));
+                                    plane.setModel(rs2.getString(2));
+                                    plane.setLocuri(rs2.getInt(3));
+                                    plane.setLocuriB(rs2.getInt(4));
+                                }//else{
+                                    //System.out.println("Nu sunt avioane adaugate!");
+                                    //SwingUtilities.invokeLater(Avion::new);
+                                //}
+                            }
+                            zborNou.setAvion(plane);
+                            rs2.close();
+                            stmt2.close();
+
+
+                    zborNou.setDestinatiePlecare(rs.getString("departure"));
+                    zborNou.setDestinatieSosire(rs.getString("arrival"));
+                    zborNou.setOraPlecare(rs.getTime("h_departure").toLocalTime());
+                    zborNou.setOraSosire(rs.getTime("h_arrival").toLocalTime());
+                    zborNou.setData(rs.getDate("date").toLocalDate());
+                    zborNou.setDurata(rs.getTime("duration").toLocalTime());
+                    zborNou.setPret(rs.getDouble("price"));
+
+                    addInListaZboruri(zborNou);
+                }
+                rs.close();
+                stmt.close();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Eroare: " + e.getMessage(), "Eroare ", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     /**
      * Getter id zbor

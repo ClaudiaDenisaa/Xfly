@@ -12,6 +12,11 @@ public class Mancare {
     public static ArrayList<Mancare> listaMancare = new ArrayList<>();
 
     /**
+     * Constructor fara parametri
+     */
+    public Mancare() {};
+
+    /**
      * Constructor Mancare
      * @param numeMancare - tip String
      * @param pretMancare - tip double
@@ -65,6 +70,7 @@ public class Mancare {
             throw new RuntimeException(e);
         }
     }
+
 
     /**
      * Seteaza lista globala de mancare

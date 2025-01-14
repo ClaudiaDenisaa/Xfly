@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class Bilet {
@@ -21,7 +24,7 @@ public class Bilet {
     private int idMancare;
     private int idBautura;
 
-
+   public static ArrayList<Bilet> listaBilete =  new ArrayList<>();
 
     /**
      * Constructor fara parametrii
@@ -48,6 +51,16 @@ public class Bilet {
         this.pret=pr;
     }
 
+    /**
+     * Constructor Bilet
+     * @param idZbor - id_reservation
+     * @param idUser - id_user
+     * @param pretTotal - pretul total
+     * @param clasa - clasa A  sau B
+     * @param film - tip String
+     * @param idMancare - id_food
+     * @param idBautura - id_drink
+     */
     public Bilet(int idZbor,int idUser,double pretTotal,String clasa,String film,int idMancare,int idBautura){
        this.idZbor=idZbor;
        this.idUser=idUser;
@@ -58,6 +71,28 @@ public class Bilet {
        this.idBautura=idBautura;
     }
 
+    /**
+     * Constructor Bilet - lista de bilete va avea acest constructor pentru bilet
+     * @param idBilet - tip int
+     * @param pretTotal - tip double
+     * @param clasa - tip String
+     * @param film - tip String
+     * @param idMancare - tip int
+     * @param idBautura - tip int
+     */
+    public Bilet(int idBilet,double pretTotal,String clasa,String film,int idMancare,int idBautura){
+        this.id_bilet=idBilet;
+        this.pret=pretTotal;
+        this.clasa=clasa;
+        this.film=film;
+        this.idMancare=idMancare;
+        this.idBautura=idBautura;
+    }
+
+    /**
+     * Adauga in baza de date un bilet, in tabela reservation
+     * @param bilet - tip bilet
+     */
     public static void addReservationBD(Bilet bilet){
         try(Conn conn = new Conn()){
             if(conn.MyConn() == 0){
@@ -77,6 +112,48 @@ public class Bilet {
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void deleteReservationBD(int idZReservation){
+        try(Conn conn = new Conn()){
+            if(conn.MyConn() == 0){
+                JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+            }else{
+                String deleteSQL = "DELETE FROM reservation WHERE id_reservation=?";
+                PreparedStatement pstmt = conn.getDB().prepareStatement(deleteSQL);
+                pstmt.setInt(1, idZReservation);
+                pstmt.executeUpdate();
+                pstmt.close();
+            }
+        }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+        }
+    }
+
+    public static void takeReservationBD(int idUser){
+        try(Conn conn = new Conn()){
+            if(conn.MyConn() == 0){
+                JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
+            }else{
+                String query = "SELECT id_reservation,price_reservation,class,movie,id_food,id_drink FROM reservation WHERE id_user = ?";
+                PreparedStatement stmt = conn.getDB().prepareStatement(query);
+                stmt.setInt(1, idUser);
+                ResultSet rs = stmt.executeQuery();
+                while(rs.next()){
+                    int idReservation = rs.getInt("id_reservation");
+                    double pret = rs.getDouble("price_reservation");
+                    String clasa = rs.getString("class");
+                    String film = rs.getString("movie");
+                    int idFood = rs.getInt("id_food");
+                    int idDrink = rs.getInt("id_drink");
+                    Bilet bilet = new Bilet(idReservation,pret,clasa,film,idFood,idDrink);
+                    listaBilete.add(bilet);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

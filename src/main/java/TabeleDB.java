@@ -106,7 +106,7 @@ public class TabeleDB {
                 duration VARCHAR(5),
                 classB VARCHAR(45),
                 PRIMARY KEY (id_flight),
-                FOREIGN KEY (id_plane) REFERENCES plane(id_plane) ON DELETE CASCADE
+                FOREIGN KEY (id_plane) REFERENCES plane(id_plane) ON DELETE CASCADE ON UPDATE CASCADE
             );
         """;
 
@@ -129,10 +129,10 @@ public class TabeleDB {
         id_food INT NOT NULL,
         id_drink INT NOT NULL,
         PRIMARY KEY (id_reservation),
-        FOREIGN KEY (id_flight) REFERENCES flight(id_flight) ON DELETE CASCADE,
-        FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE,
-        FOREIGN KEY (id_food) REFERENCES food(id_food) ON DELETE CASCADE,
-        FOREIGN KEY (id_drink) REFERENCES drink(id_drink) ON DELETE CASCADE
+        FOREIGN KEY (id_flight) REFERENCES flight(id_flight) ON DELETE CASCADE ON UPDATE NO ACTION,
+        FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE ON UPDATE NO ACTION,
+        FOREIGN KEY (id_food) REFERENCES food(id_food) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        FOREIGN KEY (id_drink) REFERENCES drink(id_drink) ON DELETE NO ACTION ON UPDATE NO ACTION
     );
     """;
 
