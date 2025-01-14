@@ -9,11 +9,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //new LogIn();
+        new LogIn();
        //new Inregistrare();
-      new VizualizareZborAdmin();
+      //new VizualizareZborAdmin();
         //new Avion();
         //new AddZborAdmin();
+        //new VizualizareZborPasager();
+        //new AddFood();
+        //new AddDrink();
+        //new IstoricRezervari();
 
 
        // Avion.takeAvionDB();
@@ -21,10 +25,6 @@ public class Main {
        // System.out.println(Zbor.getListaZboruri());
        // System.out.println(Plane.getAvioane());
 
-//ok//continua cu cnp si restul
-//ok// conectare baza de date si verificare daca se potriveste numele si parola si daca da atunci se va merge in pagina //nu ai creat o inca
-//ok//pentru admin creezi ceva special,daca acesta are numele admin si parola data de tine creezi de dinainte in aplicatie si setezi acestea
-//ok//deci daca e admin intri in pagina VizualizareZborAdmin
 
      /*   try {
             Conn conexiune = new Conn();
