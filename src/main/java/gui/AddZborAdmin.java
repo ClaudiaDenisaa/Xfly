@@ -57,14 +57,6 @@ public class AddZborAdmin extends MyFrame{
                 SwingUtilities.invokeLater(VizualizareZborAdmin::new);
             }
         });
-//validare:
-        //avioanele cand merge pe pagina sau cand apasa butonul de selectare sa se incarce lista direct cu ce model este in baza de date-lista de modele
-        //pret sa fie decimal xx.xx
-        //plecare si sosire sa fie string
-
-        //cand se apasa butonul de adaugare in Vizualizare zboruri sa apara zborul si datele despre el,
-        //va trebui sa poti modifica un zbor ca admin si sa l stergi ... gandestete la logica pentru astea
-        //sa schimbi layoutul si sa faci separat componenta(chenarul cu informatii de zbor) apoi sa o adaugi
     }
 
     public void extragereAvioaneBD(){
@@ -258,7 +250,6 @@ public class AddZborAdmin extends MyFrame{
                 }
             }
 
-            //SE VA CREA ZVORUL CARE APARE LA VIZUALIZARE ZBOR ADMIN CAT SI LA CLIENT
 
             plecareAleasa.setText("");
             sosireAleasa.setText("");
