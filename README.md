@@ -11,9 +11,7 @@ A)Administratorul
 
 1.Adaugare curse(ora plecare, sosire,destinatie,pret,tip avion, ruta, durata zbor)
 
-2.Modificare cursa(întârzierea-mesaj către client,SMS,notificare in aplicație la b)3 )
-
-3.Stergere cursa(dispare din lista de la client, apare mesaj daca s a făcut rezervare SMS si notificare ,obtiune de reprogramare pt client, restituire bani)
+2.Stergere cursa(dispare din lista de la client)
 
 
 B)Clientul
@@ -27,23 +25,9 @@ B)Clientul
 -din x spre y
 
 
-2.Cautare cursa după diferite chei
+2.Rezervare zbor(in limita locurilor disponibile, selectare din meniu a mâncării si băuturii,selectare in avans filme.
 
--oraș
-
--data
-
--ora plecare
-
--ora sosire
-
-
-3.Rezervare zbor(in limita locurilor disponibile, alegere vizuala loc(clasa 1 clasa 2),plata(in funcție de clasa),selectare din meniu a mâncării si băuturii(in funcție de clasa),selectare in avans filme
-
-
-+++
-4.Vizualizare in timp real a etapelor zborului(unde ești pe harta,intarzieri,)
-
+3.Vizualizarea zborurilor rezervate
 
 
 ## Obiective
@@ -51,15 +35,10 @@ Rezervare si informatii despre calatorie.
 
 
 
-
 ## Arhitectura
 
 *MySQL
 *Swing UI
-
-Diagrama clase:
-(https://lucid.app/lucidchart/77bd3342-c945-4dae-9acc-a1cc381296ec/edit?invitationId=inv_7a96373c-28cd-436a-b998-bcdf0269cdbb&page=0_0#)
-
 
 
 
@@ -69,18 +48,15 @@ Administrator:
 
 -Adauga zbor
 
--Modifica zbor
-
 -Anuleaza zbor
+
 
 
 Client:
 
 -rezervare zbor
 
---prin formular alegerea clasei,locului,meniului,bauturii,informatii bagaj
-
--modificare rezervare(ziua.data in functie de disponibilitatea din acea zi la acelasi zbor)
+--prin formular alegerea clasei,mancarii,bauturii,filmului
 
 -anulare rezervare
 
@@ -91,4 +67,5 @@ Client:
 https://www.w3schools.com/java/default.asp
 https://lucid.app/documents#/documents?folder_id=home
 tutoriale : YouTube
+materie : Programare 3
 
