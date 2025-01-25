@@ -51,7 +51,7 @@ Arhitectura:
 ##
 Functionalitati/Exemple utilizare:
 ##
-Administrator:
+<u>Administrator:</u>
 <br>
 -Adauga zbor
 <br>
