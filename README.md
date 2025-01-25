@@ -32,7 +32,7 @@ B)Clientul:
 +++ 4.Vizualizare in timp real a etapelor zborului(unde ești pe harta)
 ##
 ##
-<br><br>
+
 ##
 Obiective:
 ##
