@@ -114,6 +114,11 @@ public class BiletDB {
             JOptionPane.showMessageDialog(null, "Eroare la conectarea cu baza de date: ", "Eroare", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Sterge din baza de date o rezervare a unui id dat
+     * @param idZReservation - id ul rezervarii - int
+     */
     public static void deleteReservationBD(int idZReservation){
         try(Conn conn = new Conn()){
             if(conn.MyConn() == 0){
@@ -131,6 +136,10 @@ public class BiletDB {
         }
     }
 
+    /**
+     * Adauga in lista de bilete un bilet pe care il formez luand info din baza de date
+     * @param idUser - id ul utilizatorului
+     */
     public static void takeReservationBD(int idUser){
         try(Conn conn = new Conn()){
             if(conn.MyConn() == 0){

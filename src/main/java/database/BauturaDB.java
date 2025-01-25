@@ -54,6 +54,12 @@ public class BauturaDB {
         }
     }
 
+    /**
+     * Cauta id ul pentru numele si pretul dat ca parametru
+     * @param numeBautura - String
+     * @param pretBautura - double
+     * @return id ul pentru drink; 0 altfel
+     */
     public static int getIdDrinkWhere(String numeBautura, double pretBautura) {
         try (Conn conexiune = new Conn()) {
             if (conexiune.MyConn() == 0) {

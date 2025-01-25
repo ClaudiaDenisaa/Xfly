@@ -54,6 +54,12 @@ public class MancareDB {
         }
     }
 
+    /**
+     * Cauta id ul care are numele si pretul dat ca parametru
+     * @param numeMancare - String
+     * @param pretMancare - double
+     * @return id ul pentru food; 0 daca nu
+     */
     public static int getIdFoodWhere(String numeMancare, double pretMancare){
         try (Conn conexiune = new Conn()) {
             if (conexiune.MyConn() == 0) {

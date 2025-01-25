@@ -220,6 +220,10 @@ public class Zbor {
         this.durata = durata;
     }
 
+    /**
+     * Detalile unui zbor
+     * @return info zbor
+     */
    @Override
     public String toString() {
         return avion +" " +pret + " "+destinatiePlecare+" "+destinatieSosire+" "+oraPlecare+" "+oraSosire+" "+data;

@@ -123,25 +123,17 @@ public class VizualizareZborPasager extends MyFrame {
          JPanel mainPanel = new JPanel();
          mainPanel.setAlignmentY(CENTER_ALIGNMENT);
          mainPanel.setBackground(new Color(0xFFFFFF));
-         //mainPanel.setSize(dialog.getWidth() - 50, dialog.getHeight() - 50);
 
 
         JPanel formPanel = new JPanel();
-        //formPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         formPanel.setLayout(new GridLayout(10,1,30,30));
-        formPanel.setBackground(Color.LIGHT_GRAY); // Adăugați o culoare pentru a observa dimensiunile
-        //formPanel.setSize(mainPanel.getWidth()-50, mainPanel.getHeight()-50);
-        //formPanel.setPreferredSize(new Dimension(600, 600)); // Dimensiunea preferată
-        //formPanel.setMaximumSize(new Dimension(200, 100)); // Dimensiunea maximă
-        //formPanel.setMinimumSize(new Dimension(600, 500)); // Dimensiunea minimă
+        formPanel.setBackground(Color.LIGHT_GRAY);
 
 
 
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
         formPanel.setAlignmentY(CENTER_ALIGNMENT);
-        //formPanel.add(Box.createRigidArea(new Dimension(10, 10)));
         formPanel.setBackground(new Color(0xFFFFFF));
-        //formPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));//aici
 
 
 
