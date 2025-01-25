@@ -1,9 +1,10 @@
 # Xfly
 Programare3, Proiect individual  (JAVA)
 
-
+##
 O aplicatie pentru o companie aeriana. Aplicatia din doua perspective, a administratorului si a unui pasager.
 
+##
 ##
 A)Administratorul:
 
@@ -29,9 +30,12 @@ B)Clientul:
 3.Rezervare zbor(in limita locurilor disponibile, alegere vizuala loc(clasa 1 clasa 2),plata(in funcție de clasa),selectare din meniu a mâncării si băuturii,selectare in avans filme
 
 +++ 4.Vizualizare in timp real a etapelor zborului(unde ești pe harta)
-
+##
+##
+<br><br>
 ##
 Obiective:
+##
 <br>
 Administrarea zborurilor.(admin)
 Rezervare si informatii despre calatorie.(pasager)
@@ -39,15 +43,16 @@ Rezervare si informatii despre calatorie.(pasager)
 
 ##
 Arhitectura:
-
+##
 *MySql
+<br>
 *Swing UI
 
 
 
 ##
 Functionalitati/Exemple utilizare:
-
+##
 Administrator:
 <br>
 -Adauga zbor
