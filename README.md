@@ -62,7 +62,7 @@ Client:
 <br>
 -rezervare zbor
 <br>
---prin formular alegerea clasei,locului,meniului,bauturii,informatii bagaj
+--prin formular alegerea clasei,locului,meniului,bauturii,film
 <br>
 -anulare rezervare
 
