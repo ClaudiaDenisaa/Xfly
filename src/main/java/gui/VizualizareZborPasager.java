@@ -18,9 +18,10 @@ public class VizualizareZborPasager extends MyFrame {
     private JScrollPane scrollPanel;
     private JPanel panelComponente;
     private JButton btnIesire;
-    //private JTextField baraCautare;
-    //private JButton button1;
+    private JTextField baraCautare;
+    private JButton button1;
     private JButton btnIstoricRezervari;
+    private JTextField textField1;
 
     /**
      * Constructor VizualizareZborPasager

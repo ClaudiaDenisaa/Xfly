@@ -23,9 +23,9 @@ public class TabeleDB {
             createUserTable();
             createPlaneTable();
             createFlightTable();
-            createReservationTable();
             createFoodTable();
             createDrinkTable();
+            createReservationTable();
         }
 
     /**
@@ -126,9 +126,9 @@ public class TabeleDB {
         id_user INT NOT NULL,
         price_reservation DECIMAL(6,2),
         class VARCHAR(2),
-        movie VARCHAR(255) NULL DEFAULT NULL ;
-        id_food INT DEFAULT NULL;
-        id_drink INT DEFAULT NULL;
+        movie VARCHAR(255) NULL DEFAULT NULL,
+        id_food INT DEFAULT NULL,
+        id_drink INT DEFAULT NULL,
         PRIMARY KEY (id_reservation),
         FOREIGN KEY (id_flight) REFERENCES flight(id_flight) ON DELETE CASCADE ON UPDATE NO ACTION,
         FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE ON UPDATE NO ACTION,
